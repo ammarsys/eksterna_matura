@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kviz | Tehnička kultura</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<script>
+    let quizData;
+    let index = 1;
+    let correct_qs = 0;
+
+    async function getQuizData() {
+        return fetch('/api/data', {
+            method: "GET"
+        }).then(response => response.json()).then(json => {
+            quizData = json;
+        })
+    }
+
+    function displayQuestions(number, data) {
+        document.getElementById('question-num').innerHTML = `${number}/150`
+        document.getElementById('question').innerHTML = data["text"]
+
+        document.getElementById('ans-a-label').innerHTML = data["answers"][0];
+        document.getElementById('ans-b-label').innerHTML = data["answers"][1];
+        document.getElementById('ans-c-label').innerHTML = data["answers"][2];
+        document.getElementById('ans-d-label').innerHTML = data["answers"][3];
+    }
+
+    function validateAnswer() {
+        let selected_answer_letter = document.querySelector("input[name=answer_rb]:checked").value;
+        let answer = document.getElementById(`ans-${selected_answer_letter}-label`).innerText;
+        let data = quizData["questions"][index];
+
+        if (data["answers"][data["corr"]] === answer) {
+            Swal.fire({
+              title: 'Tačan odgovor!',
+              icon: 'success',
+              confirmButtonText: 'Nastavi dalje'
+            }).then((_) => {
+                    ++index;
+                    ++correct_qs;
+
+                    document.getElementById('answers-correct').innerHTML = correct_qs
+                    defaultBehaviourDQ()
+                }
+            )
+        } else {
+            Swal.fire({
+              title: "Netačan odgovor!",
+              html: `Vi ste izabrali odgovor, <br><b>${answer}</b>. <br>a tačan je,<br><b>${data["answers"][data["corr"]]}</b>`,
+              icon: 'error',
+              confirmButtonText: 'Nastavi dalje'
+            }).then((_) => {
+                    document.getElementById('answers-incorrect').innerText = index - correct_qs
+                    ++index;
+                    defaultBehaviourDQ()
+                }
+            )
+        }
+    }
+
+    function defaultBehaviourDQ() {
+         displayQuestions(index.toString(), quizData["questions"][index]);
+    }
+
+
+    window.onload = async function () {
+        await getQuizData();
+        defaultBehaviourDQ();
+    };
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .content {
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .holder {
+        gap: 2em;
+        font-size: 17px;
+    }
+</style>
+
+<body>
+<div class="content">
+    <div class="holder">
+        <p>Broj pitanja, <span id="question-num" style="color: chocolate">0/150</span></p>
+        <p>Tačnih/Netačnih odgovora,
+            <span id="answers-correct" style="color: green">0</span>
+            /
+            <span id="answers-incorrect" style="color: red">0</span>
+        </p>
+        <hr>
+    </div>
+
+    <br>
+    <i><p id="question"></p></i>
+
+    <form>
+        <input type="radio" value="a" id="ans-a" name="answer_rb">
+        <label for="ans-a" id="ans-a-label"></label><br>
+
+        <input type="radio" value="b" id="ans-b" name="answer_rb">
+        <label for="ans-b" id="ans-b-label"></label><br>
+
+        <input type="radio" value="c" id="ans-c" name="answer_rb">
+        <label for="ans-c" id="ans-c-label"></label><br>
+
+        <input type="radio" value="d" id="ans-d" name="answer_rb"/>
+        <label for="ans-d" id="ans-d-label"></label><br><br>
+
+        <button type="button" class="btn btn-secondary btn-xl" onclick="validateAnswer();">Podnesi odgovor</button>
+    </form>
+
+</div>
+</body>
+</html>

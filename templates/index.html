@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kviz | Tehnička kultura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .content {
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .buttons {
+        display: block;
+        gap: 2em;
+    }
+
+    .align-left {
+        float: left;
+    }
+
+    .btn-xl {
+        padding: 10px 20px;
+        font-size: 18px;
+        min-width: 170px;
+        border-radius: 10px;
+    }
+
+</style>
+<script>
+    function startQuiz() {
+        window.location.href = `/quiz`;
+    }
+
+</script>
+<body>
+    <div class="content">
+        <div class="align-left">
+            <h1>Kviz iz Tehničke kulture</h1>
+
+            <br>
+            <div>
+                <h5>Korištenjem ove web stranice pristajete na <a href="/privacypolicy">Privacy Policy</a> </h5>
+            </div>
+            <br><br>
+
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary btn-xl" onclick="startQuiz();">Započni kviz</button>
+            </div>
+        </div>
+</div>
+</body>
+</html>

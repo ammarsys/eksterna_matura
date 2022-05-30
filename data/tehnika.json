@@ -1,0 +1,22 @@
+{
+  "1": {
+    "text": "Punom debelom linijom označavamo",
+    "answers": [
+      "vidljive ivice i konture predmeta",
+      "nevidljive ivice i konture predmeta",
+      "mjesto gdje je potrebno izvršiti savijanje",
+      "simetralu crteža"
+    ],
+    "corr": 0
+  },
+  "2": {
+    "text": "Isprekidanu liniju koristimo za crtanje",
+    "answers": [
+      "zaklonjenih kontura predmeta i mjesta na kojima se vrši savianje materijala",
+      "zaklonjenih kontura predmeta i mjesta na kojima se vrši bušenje materijala",
+      "zaklonjenih kontura predmeta i mjesta na kojima se vrši brušenje materijala",
+      "zaklonjenih kontura predmeta i mjesta na kojima se vrši zavarivanje materijala"
+    ],
+    "corr": 0
+  }
+}
