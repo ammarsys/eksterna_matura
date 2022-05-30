@@ -14,7 +14,7 @@ At the moment, this project isn't production ready so there isn't a live instanc
 git clone https://github.com/novusys/eksterna_matura
 cd eksterna_matura
 
-py app.py
+py -m pip install -r requirements.txt 
 ```
 
 and to run it,
