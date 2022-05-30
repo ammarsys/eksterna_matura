@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Kviz | Tehnička kultura</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-</head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
-    body {
-        font-family: 'Inter', sans-serif;
-    }
-
-    .content {
-        height: 600px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-</style>
-<body>
-    <div class="content">
-        <div>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/legal.css') }}"
+    />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="container">
+        <div class="content">
+          <div>
             <h1>Privacy Policy</h1>
-            <br>
-            <div>
-                <h5>
-                    THIS WEBPAGE IS FOLLOWINGLY DEFINED BY “US”, “WE”, AND “OUR” OPERATES THIS WEBPAGES SERVICES. <br>
-                    WE USE YOUR DATA TO PROVIDE AND IMPROVE THE SERVICE. BY USING IT, YOU AGREE TO THE FOLLOWING <br>
-                    PRIVACY POLICY, INCLUDING THE COLLECTION OF YOUR DATA. <br><br>
+            <div class="descr">
+              <p>
+                THIS WEBPAGE IS FOLLOWINGLY DEFINED BY “US”, “WE”, AND “OUR”
+                OPERATES THIS WEBPAGES SERVICES. <br />
+                WE USE YOUR DATA TO PROVIDE AND IMPROVE THE SERVICE. BY USING
+                IT, YOU AGREE TO THE FOLLOWING <br />
+                PRIVACY POLICY, INCLUDING THE COLLECTION OF YOUR DATA.
+                <br /><br />
 
-                    IN ORDER FOR OUR SERVICES TO WORK, WE WILL COLLECT DATA SUCH AS YOUR IP ADRESS FOR RATE-LIMITING <br>
-                    PURPOSES. UPON STARTING THE QUIZ, YOU WILL BE ASSIGNED A PRIVATE, NON-TRACEABLE, ANOMYNOUS, <br>
-                    UNIQUE IDENTIFIER PURELY FOR ANALYTICAL PURPOSES OF YOUR QUIZ RESULTS. ANYONE THAT KNOWS LATTER <br>
-                    MENTIONED IDENTIFIER CAN ACCESS THE DATA WE STORE ON OUR SERVERS. YOUR DATA IS HELD IN MEMORY AND <br>
-                    IS REMOVED UPON SERVER RESTART.
-                </h5>
+                IN ORDER FOR OUR SERVICES TO WORK, WE WILL COLLECT DATA SUCH AS
+                YOUR IP ADRESS FOR RATE-LIMITING <br />
+                PURPOSES. UPON STARTING THE QUIZ, YOU WILL BE ASSIGNED A
+                PRIVATE, NON-TRACEABLE, ANOMYNOUS, <br />
+                UNIQUE IDENTIFIER PURELY FOR ANALYTICAL PURPOSES OF YOUR QUIZ
+                RESULTS. ANYONE THAT KNOWS LATTER <br />
+                MENTIONED IDENTIFIER CAN ACCESS THE DATA WE STORE ON OUR
+                SERVERS. YOUR DATA IS HELD IN MEMORY AND <br />
+                IS REMOVED UPON SERVER RESTART.
+              </p>
             </div>
+          </div>
         </div>
-</div>
-</body>
+      </div>
+    </div>
+  </body>
 </html>

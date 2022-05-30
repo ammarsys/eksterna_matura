@@ -1,0 +1,75 @@
+.content {
+  height: 100vh;
+  width: 75vw;
+}
+
+.content .container {
+  margin-left: 15%;
+  margin-top: 15em;
+}
+
+.results p {
+  margin-top: 1.5em;
+}
+
+#question {
+  font-weight: 600;
+  margin-bottom: 1em;
+  font-size: 2.4rem;
+}
+
+#question-num {
+  font-weight: 800;
+}
+
+#wrapper {
+  display: flex;
+}
+
+aside {
+  height: 100vh;
+  background-color: #222;
+  color: #fff;
+}
+
+aside .results {
+  padding: 8em;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+  font-size: 1.6rem;
+  gap: 0.4em;
+}
+
+.option label {
+  margin-top: 0.25em;
+}
+
+button {
+  margin-top: 1em;
+}
+
+@media only screen and (max-width: 1600px) {
+  #wrapper {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  aside {
+    height: auto;
+  }
+
+  .container {
+    margin-top: 0 !important;
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
