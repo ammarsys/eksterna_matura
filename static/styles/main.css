@@ -153,6 +153,10 @@ p {
   font-size: 2.5rem;
 }
 
+strong {
+  font-weight: 800;
+}
+
 button {
   padding: 0.7em 2em;
   border: 2px solid #111;

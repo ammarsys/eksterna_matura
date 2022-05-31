@@ -65,10 +65,12 @@ function defaultBehaviourDQ() {
 }
 
 window.onload = async function () {
+  await getQuizData();
+
   document
     .querySelector(".validate-btn")
     .addEventListener("click", () => validateAnswer());
+  document.getElementById('id-key').innerHTML = `<strong">${quizData["id"]}</strong> tvoj identifikacijski kod`
 
-  await getQuizData();
   defaultBehaviourDQ();
 };
