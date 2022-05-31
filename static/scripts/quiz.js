@@ -27,7 +27,6 @@ async function getQuizData() {
     .then((response) => response.json())
     .then((json) => {
       quizData = shuffleQuestions(json);
-      console.log(quizData);
     });
 }
 
