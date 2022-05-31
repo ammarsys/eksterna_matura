@@ -1,6 +1,12 @@
 let quizData;
-let index = 1;
+let index = 0;
 let correct_qs = 0;
+
+function shuffleQuestions(data) {
+  const array = data.questions;
+  const newArr = array.sort(() => Math.random() - 0.5);
+  return { ...data, questions: newArr };
+}
 
 async function getQuizData() {
   return fetch("/api/data", {
@@ -8,7 +14,8 @@ async function getQuizData() {
   })
     .then((response) => response.json())
     .then((json) => {
-      quizData = json;
+      quizData = shuffleQuestions(json);
+      console.log(quizData);
     });
 }
 
@@ -37,7 +44,7 @@ function validateAnswer() {
       icon: "success",
       confirmButtonText: "Nastavi dalje",
     }).then((_) => {
-      ++index;
+      index++;
       ++correct_qs;
 
       document.getElementById("answers-correct").innerHTML = correct_qs;
@@ -54,7 +61,7 @@ function validateAnswer() {
     }).then((_) => {
       document.getElementById("answers-incorrect").innerText =
         index - correct_qs;
-      ++index;
+      index++;
       defaultBehaviourDQ();
     });
   }
@@ -70,7 +77,9 @@ window.onload = async function () {
   document
     .querySelector(".validate-btn")
     .addEventListener("click", () => validateAnswer());
-  document.getElementById('id-key').innerHTML = `<strong">${quizData["id"]}</strong> tvoj identifikacijski kod`
+  document.getElementById(
+    "id-key"
+  ).innerHTML = `<strong">${quizData["id"]}</strong> tvoj identifikacijski kod`;
 
   defaultBehaviourDQ();
 };
