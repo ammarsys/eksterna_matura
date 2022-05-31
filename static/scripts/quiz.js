@@ -1,6 +1,24 @@
 let quizData;
-let index = 1;
+let index = 0;
 let correct_qs = 0;
+
+function shuffleQuestions(data) {
+  let array = data.questions;
+  let currentIndex = array.length,
+    randomIndex;
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return { ...data, questions: array };
+}
 
 async function getQuizData() {
   return fetch("/api/data", {
@@ -8,7 +26,7 @@ async function getQuizData() {
   })
     .then((response) => response.json())
     .then((json) => {
-      quizData = json;
+      quizData = shuffleQuestions(json);
     });
 }
 
@@ -37,7 +55,7 @@ function validateAnswer() {
       icon: "success",
       confirmButtonText: "Nastavi dalje",
     }).then((_) => {
-      ++index;
+      index++;
       ++correct_qs;
 
       document.getElementById("answers-correct").innerHTML = correct_qs;
@@ -54,7 +72,7 @@ function validateAnswer() {
     }).then((_) => {
       document.getElementById("answers-incorrect").innerText =
         index - correct_qs;
-      ++index;
+      index++;
       defaultBehaviourDQ();
     });
   }
@@ -70,7 +88,9 @@ window.onload = async function () {
   document
     .querySelector(".validate-btn")
     .addEventListener("click", () => validateAnswer());
-  document.getElementById('id-key').innerHTML = `<strong">${quizData["id"]}</strong> tvoj identifikacijski kod`
+  document.getElementById(
+    "id-key"
+  ).innerHTML = `<strong">${quizData["id"]}</strong> tvoj identifikacijski kod`;
 
   defaultBehaviourDQ();
 };
