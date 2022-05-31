@@ -3,9 +3,21 @@ let index = 0;
 let correct_qs = 0;
 
 function shuffleQuestions(data) {
-  const array = data.questions;
-  const newArr = array.sort(() => Math.random() - 0.5);
-  return { ...data, questions: newArr };
+  let array = data.questions;
+  let currentIndex = array.length,
+    randomIndex;
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return { ...data, questions: array };
 }
 
 async function getQuizData() {
